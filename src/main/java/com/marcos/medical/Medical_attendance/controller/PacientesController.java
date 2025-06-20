@@ -25,4 +25,15 @@ public class PacientesController {
     public Pacientes save(@RequestBody Pacientes paciente) {
         return pacientesDao.save(paciente);
     }
+
+    @PostMapping("/pacientes/login")
+    public Pacientes login(@RequestBody Pacientes loginRequest) {
+        List<Pacientes> pacientesList = pacientesDao.getAllPacientes();
+        for (Pacientes paciente : pacientesList) {
+            if (paciente.getNome().equals(loginRequest.getNome()) && paciente.getPass().equals(loginRequest.getPass())) {
+                return paciente;
+            }
+        }
+        return null;
+    }
 }

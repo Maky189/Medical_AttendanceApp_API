@@ -24,4 +24,15 @@ public class MedicosController {
     public Medicos save(@RequestBody Medicos medico) {
         return medicosDao.save(medico);
     }
+
+    @PostMapping("/medicos/login")
+    public Medicos login(@RequestBody Medicos loginRequest) {
+        List<Medicos> medicosList = medicosDao.getAllMedicos();
+        for (Medicos medico : medicosList) {
+            if (medico.getNome().equals(loginRequest.getNome()) && medico.getPass().equals(loginRequest.getPass())) {
+                return medico;
+            }
+        }
+        return null;
+    }
 }
