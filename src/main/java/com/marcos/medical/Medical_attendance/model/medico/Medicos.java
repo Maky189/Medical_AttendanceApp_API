@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Medicos {
+
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private int id;

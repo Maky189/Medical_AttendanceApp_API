@@ -25,13 +25,13 @@ CREATE TABLE medicos (
 INSERT INTO medicos (nome, especialidade, horario, pass) VALUES ('Flavia', 'Cardiologista', '08:00-18:00', '12345');
 
 CREATE TABLE consultas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     paciente_id INT NOT NULL,
     medico_id INT NOT NULL,
     data DATE NOT NULL,
     hora TIME NOT NULL,
     descricao VARCHAR(255) NOT NULL,
     status VARCHAR(255) NOT NULL,
-    PRIMARY KEY (paciente_id, medico_id, data, hora),
     FOREIGN KEY (paciente_id) REFERENCES pacientes(id),
     FOREIGN KEY (medico_id) REFERENCES medicos(id)
 );
